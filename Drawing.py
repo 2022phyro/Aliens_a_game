@@ -5,7 +5,7 @@ class Screen_settings:
         """Initialize the game settings"""
         self.screen_width = 1200
         self.screen_height = 690
-        self.factor = 1.5
+        self.factor = 2.5
 
 
 class Background:
@@ -13,6 +13,7 @@ class Background:
         self.screen = screen
         
         self.image = pygame.image.load('The_background.bmp')
+        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
