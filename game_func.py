@@ -1,27 +1,30 @@
 import sys
 from bullets import *
 from Drawing import *
+from Alien_combo import ALIEN as A
 
-
-def check_key_down(event, ship, bullet, bullets):
+def check_key_down(event, ship, bullet, bullets, alien_bullet, alien_bullets, aliens):
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_q:
             sys.exit()
         ship.move_ship(event)
         bullet.move_bullets(event, bullets)
+        alien_bullet.fire_bullets(alien_bullets, aliens)
 
-
-def check_events(ship, bullets, bullet):
+def check_events(ship, bullets, bullet, alien_bullet, alien_bullets, aliens):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        check_key_down(event, ship, bullet, bullets)
-        ship.stop_ship(event) 
+        check_key_down(event, ship, bullet, bullets, alien_bullet, alien_bullets, aliens)
+        ship.stop_ship(event)
 
 
-def draw_screen(background, ship, screen, bullets, aliens):
+
+def draw_screen(background, ship, screen, bullets, aliens, alien_bullet, alien_bullets):
     background.draw_background()
-    aliens.draw(screen)
     ship.draw_ship()
     Bullet.draw_bullets(bullets, bullets)
+    aliens.draw(screen)
+    alien_bullet.draw_b(aliens, alien_bullets)
+
     pygame.display.flip()
