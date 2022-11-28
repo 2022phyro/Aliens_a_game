@@ -3,6 +3,20 @@ from bullets import *
 from Drawing import *
 from Alien_combo import ALIEN as A
 
+def change_fleet_direction(game_settings, aliens):
+    for alien in aliens.sprites():
+        alien.rect.y += game_settings.fleet_drop_speed
+        game_settings.fleet_direction *= -1
+def check_fleet_edges(game_settings, aliens, screen):
+    for alien in aliens.sprites():
+        if alien.check_edges(screen):
+            change_fleet_direction(game_settings, aliens)
+            break
+
+def update_alien(game_settings, aliens, screen):
+    check_fleet_edges(game_settings, aliens, screen)
+    aliens.update()
+
 def check_key_down(event, ship, bullet, bullets, alien_bullet, alien_bullets, aliens):
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_q:

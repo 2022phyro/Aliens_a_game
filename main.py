@@ -26,6 +26,7 @@ def run_game():
         check_events(starship, bullets, bullet, alien_bullet, alien_bullets, aliens)
         starship.update_ship_movements()
         bullet.update_the_catridge(bullets)
+        update_alien(base_screen, aliens, screen)
         alien_bullet.fire_off(aliens, alien_bullets)
 
 #       display the last screen

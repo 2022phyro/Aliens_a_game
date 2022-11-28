@@ -83,20 +83,29 @@ class Spaceship:
 class Alien(Sprite):
     def __init__(self, screen, game_settings):
         super(Alien, self).__init__()
-        self.gme_set = Screen_settings()
         self.screen = screen
+
         self.game_settings = game_settings
         self.movement_factor = 1
         self.image = pygame.image.load('Images/The_Alien.bmp')
         self.rect = self.image.get_rect()
         self.rect.x  = self.rect.width
         self.rect.y = self.rect.height
+        self.gme = Screen_settings()
 
         self.x = float(self.rect.x)
         self.x = float(self.rect.y)
     def draw_alien(self):
         self.screen.blit(self.image, self.rect)
     def update(self):
-        self.x += (self.movement_factor * self.gme_set.fleet_direction)
+        self.x += (self.movement_factor * self.gme.fleet_direction)
         self.rect.x = self.x
+    def check_edges(self, screen):
+        self.screen_rect = screen.get_rect()
+        if self.rect.right >= self.screen_rect.right:
+            return True
+        elif self.rect.left <= 0:
+            return True
+
+
 
