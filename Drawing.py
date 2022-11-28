@@ -10,7 +10,7 @@ class Screen_settings:
         self.screen_height = 690
         self.factor = 2.5
         self.fleet_direction = 1
-        self.fleet_drop_speed = 2.5
+        self.fleet_drop_speed = 20
 
 
 class Background:
@@ -106,6 +106,7 @@ class Alien(Sprite):
             return True
         elif self.rect.left <= 0:
             return True
-
+        else:
+            return False
 
 

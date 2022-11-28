@@ -5,8 +5,8 @@ from Alien_combo import ALIEN as A
 
 def change_fleet_direction(game_settings, aliens):
     for alien in aliens.sprites():
-        alien.rect.y += game_settings.fleet_drop_speed
-        game_settings.fleet_direction *= -1
+        alien.rect.y += alien.gme.fleet_drop_speed
+        alien.gme.fleet_direction *= -1
 def check_fleet_edges(game_settings, aliens, screen):
     for alien in aliens.sprites():
         if alien.check_edges(screen):
