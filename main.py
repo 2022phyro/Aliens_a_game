@@ -25,7 +25,7 @@ def run_game():
     while True:
         check_events(starship, bullets, bullet, alien_bullet, alien_bullets, aliens)
         starship.update_ship_movements()
-        bullet.update_the_catridge(bullets)
+        AL.update_the_bullets(starship, base_screen, bullets, bullet, aliens, alien_bullets, screen)
         update_alien(base_screen, aliens, screen)
         alien_bullet.fire_off(aliens, alien_bullets)
 

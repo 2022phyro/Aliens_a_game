@@ -1,5 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
+from Alien_combo import  ALIEN as A
+from Drawing import *
 
 class Bullet_settings:
      def __init__(self):
@@ -14,6 +16,7 @@ class Bullet(Sprite):
         super(Bullet, self).__init__()
         self.screen = screen
         self.ship = ship
+        self.gme = Screen_settings()
         self.bulset = Bullet_settings
         self.rect = pygame.Rect(0, 0, self.bulset.width,
                 self.bulset.height)
@@ -63,10 +66,9 @@ class Bullet(Sprite):
             if bullet.rect.bottom <= 0:
                 bullets.remove(bullet)
 
-    def update_the_catridge(self, bullets):
+    def update_the_catridge(self, bullets, aliens):
         bullets.update()
         self.rid_excess_bullets(bullets)
-
 
 class Alien_bullet(Sprite):
     def __init__(self, Bullet_settings, screen, ship):
