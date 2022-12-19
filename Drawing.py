@@ -9,9 +9,25 @@ class Screen_settings:
         self.screen_width = 1200
         self.screen_height = 690
         self.factor = 2.5
+        self.s_scale = 1.1
+        self.score_scale = 5
+        self.high_score = 0
+        self.dynamic_settings()
+    def dynamic_settings(self):
         self.fleet_direction = 1
         self.fleet_drop_speed = 20
-
+        self.ship_limit = 5
+        self.movement_factor = 2
+        self.score_sc = 5
+    def speedup(self):
+        self.fleet_drop_speed *= self.s_scale
+        self.movement_factor *= self.s_scale
+        self.fleet_direction *= self.s_scale
+        self.score_sc += self.score_scale
+    def returns(self):
+        self.fleet_direction = 1
+        self.fleet_drop_speed = 20
+        self.movement_factor = 2
 
 class Background:
     def __init__(self, screen):
@@ -47,7 +63,11 @@ class Spaceship:
     def draw_ship(self):
     #Draw the starship
         self.screen.blit(self.image, self.rect)
-
+    def centered(self):
+        self.center = self.screen_rect.centerx
+        self.bottom = self.screen_rect.bottom
+    def speedUp(self):
+        self.game_settings.factor *= 2.5
     def move_ship(self, event):
         if event.key == pygame.K_RIGHT:
             self.right = True
@@ -86,7 +106,6 @@ class Alien(Sprite):
         self.screen = screen
 
         self.game_settings = game_settings
-        self.movement_factor = 2
         self.image = pygame.image.load('Images/The_Alien.bmp')
         self.rect = self.image.get_rect()
         self.rect.x  = self.rect.width
@@ -98,7 +117,7 @@ class Alien(Sprite):
     def draw_alien(self):
         self.screen.blit(self.image, self.rect)
     def update(self):
-        self.x += (self.movement_factor * self.gme.fleet_direction)
+        self.x += (self.gme.movement_factor * self.gme.fleet_direction)
         self.rect.x = self.x
     def check_edges(self, screen):
         self.screen_rect = screen.get_rect()

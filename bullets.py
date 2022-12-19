@@ -1,20 +1,30 @@
 import pygame
 from pygame.sprite import Sprite
-from Alien_combo import  ALIEN as A
+from Alien_combo import ALIEN as A
 from Drawing import *
-
+from threading import Timer
+import time
 class Bullet_settings:
      def __init__(self):
         self.width = 1.5
         self.height = 15
-        self.speed_factor = 3.5
         self.color = (250, 0, 0)
         self.doublegun = 25
+        self.s_scale = 1.1
+        self.dynamic_settings()
+     def dynamic_settings(self):
+        self.speed_factor = 3.5
+        self.a_speed_factor = 0.5
+     def speedup(self):
+         # self.speed_factor *= self.s_scale
+         self.a_speed_factor *= self.s_scale
+
 class Bullet(Sprite):
     #A class to manage the bullets
     def __init__(self, Bullet_settings, screen, ship):
         super(Bullet, self).__init__()
         self.screen = screen
+        self.doubles = 0
         self.ship = ship
         self.gme = Screen_settings()
         self.bulset = Bullet_settings
@@ -40,12 +50,12 @@ class Bullet(Sprite):
 
     def draw_bullet(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
-    def draw_bullets(self, bullets):
+    def draw_bullets(self, bullets, idx=0):
         for bullet in bullets.sprites():
-            # bullet.doubler()
+            if idx == 1:
+                bullet.doubler()
             # bullet.machinegun()
             bullet.draw_bullet()
-
     def doubler(self):
         self.rect.centerx = self.center + self.doublegun
         self.rect2.centerx = self.center - self.doublegun
@@ -88,7 +98,7 @@ class Alien_bullet(Sprite):
         self.rect2.centerx = ship.rect.centerx
         self.rect2.top = ship.rect.top
 
-        self.speed_factor = (self.bulset.speed_factor - 2)
+        self.speed_factor = self.bulset.a_speed_factor
         self.doublegun = self.bulset.doublegun
 
     def update(self):
@@ -99,7 +109,7 @@ class Alien_bullet(Sprite):
     def draw_bullet(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
 
-    def draw_bullets(self, bullets):
+    def draw_bullets(self, bullets, idx= 0):
         for bullet in bullets.sprites():
             # bullet.doubler()
             # bullet.machinegun()
