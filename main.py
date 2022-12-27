@@ -42,5 +42,5 @@ def run_game():
         draw_screen(background, starship, screen, bullets, aliens,
                     alien_bullet, alien_bullets, play_button, stats, score)
 
-
-run_game()
+if __name__ == '__main__':
+    run_game()

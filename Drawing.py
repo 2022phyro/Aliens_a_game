@@ -11,10 +11,11 @@ class ScreenSettings:
         self.s_scale = 1.1
         self.score_scale = 5
         self.high_score = 0
-        """Alien_bullet settings"""
+        """Alien_fleet settings"""
         self.a_no_of_columns = int(4)
         """All the necessary bullet settings"""
-        self.bullet_width = 2.5
+        self.bullet_width = 1.5
+        self.a_bullet_width = 1.5
         self.bullet_height = 15
         self.bullet_color = (250, 0, 0)
         self.bullet_double_gun = 25
@@ -46,7 +47,7 @@ class ScreenSettings:
 class Background:
     def __init__(self, screen):
         self.screen = screen
-        self.image = pygame.image.load('Images/The_background.bmp')
+        self.image = pygame.image.load('Images/The_background.bmp').convert_alpha()
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
@@ -67,6 +68,7 @@ class Spaceship:
         self.game_settings = game_settings
         self.screen = screen
         self.image = pygame.image.load('Images/The_starship.bmp')
+        self.image.set_colorkey((3, 4, 8))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
@@ -127,6 +129,7 @@ class Alien(Sprite):
 
         self.game_settings = game_settings
         self.image = pygame.image.load('Images/The_Alien.bmp')
+        self.image.set_colorkey((3, 4, 8))
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height

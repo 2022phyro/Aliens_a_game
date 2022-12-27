@@ -21,6 +21,7 @@ class Life(Sprite):
         super(Life, self).__init__()
         self.screen_rect = screen.get_rect()
         self.image = pygame.image.load("Images/Lifeline.jpg")
+        self.image.set_colorkey((3, 4, 8))
         self.rect = self.image.get_rect()
         self.rect.top = self.screen_rect.top + 15
         self.rect.left = self.screen_rect.left + 20

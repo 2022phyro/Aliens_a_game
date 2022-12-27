@@ -104,14 +104,14 @@ class AlienBullet(Sprite):
         self.screen = screen
         self.ship = ship
         self.gme = game_settings
-        self.rect = pygame.Rect(0, 0, self.gme.bullet_width,
+        self.rect = pygame.Rect(0, 0, self.gme.a_bullet_width,
                                 self.gme.bullet_height)
         self.rect.centerx = ship.rect.centerx
         self.center = self.rect.centerx
         self.rect.top = ship.rect.top
         self.y = float(self.rect.y)
         self.color = (0, 255, 255)
-        self.rect2 = pygame.Rect(0, 0, self.gme.bullet_width,
+        self.rect2 = pygame.Rect(0, 0, self.gme.a_bullet_width,
                                  self.gme.bullet_height)
         self.rect2.centerx = ship.rect.centerx
         self.rect2.top = ship.rect.top
@@ -134,8 +134,7 @@ class AlienBullet(Sprite):
         pygame.draw.rect(self.screen, self.color, self.rect2)
 
     def machinegun(self):
-        self.speed_factor += 1
-
+        self.gme.a_bullet_width = 15
     def move_bullets(self, bullets, ship):
         new_bullet = AlienBullet(self.gme, self.screen, ship)
         bullets.add(new_bullet)
