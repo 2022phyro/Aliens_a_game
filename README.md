@@ -1,7 +1,7 @@
 # ALIENS A GAME
 
 Being a great fan of games, I decided to try my hand at pygame to see what I could do. To be honest, I followed the classic model of
-Aliens and I guess I was lacking in iddeas. My game is almost complete but it has a flaw for now. Ther is no pause to make sure that you will be engrossed :laughing:
+Aliens and I guess I was lacking in ideas. My game is almost complete but it has a flaw for now. There is no pause to make sure that you will be engrossed :laughing:
 Here are the source files for this game To play it though I made it using pygame. If you have pygame installed then its alright. If you don't not to worry
 
 ## Controls :scroll:
