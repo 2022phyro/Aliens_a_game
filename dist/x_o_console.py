@@ -162,10 +162,10 @@ if __name__ == "__main__":
         mark = run_game(game)
         print("---D-O--Y-O-U--W-A-N-T--T-O--C-O-N-T-I-N-U-E--P-L-A-Y-I-N-G---")
         mask = input("Y/N: ")
-        if mask == "Y":
+        if mask == "N":
             mark = -1
-        elif mask == "N":
-            mark = run_gamr(game)
+        elif mask == "Y":
+            mark = run_game(game)
         else:
             print("Defaulting to yes")
             continue
