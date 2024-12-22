@@ -20,7 +20,7 @@ class ScreenSettings:
         self.bullet_color = (250, 0, 0)
         self.bullet_double_gun = 25
         self.bullet_s_scale = 1.1
-        self.bullet_speed_factor = 3.5
+        self.bullet_speed_factor = 2.5
         self.dynamic_settings()
     
     def dynamic_settings(self):
